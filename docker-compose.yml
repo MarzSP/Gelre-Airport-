@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  database_server:
+    image: mcr.microsoft.com/mssql/server
+    env_file:
+      - variables.env
+    ports:
+      - target: 1433
+        published: 1434
+        protocol: tcp
+        mode: host
+    volumes:
+      - data-volume:/var/opt/mssql
+  web_server:
+    platform: "linux/amd64"
+    build:
+      dockerfile: Dockerfile-webserver
+    env_file:
+      - variables.env
+    depends_on:
+      - database_server
+    ports:
+      - target: 80
+        published: 8080
+        protocol: tcp
+        mode: host
+    volumes:
+      - ./applicatie/:/applicatie/
+      - ./webserver-setup/:/setup/
+    entrypoint: [ "sh", "/setup/bootstrap.sh" ]
+volumes:
+  data-volume:

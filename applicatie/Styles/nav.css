@@ -1,0 +1,30 @@
+/* Navigatie balk bovenaan scherm */
+nav {
+    background-color: #000;
+    color: #FFDC00;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 1.5rem;
+    opacity: 0.95;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1.25rem;
+}
+
+nav ul li a {
+    color: #FFDC00;
+    text-decoration: none;
+}
+/* Wanneer de muis op een knop hovvert wordt de tekst bold en underlined. */
+nav ul li a:hover {
+    font-weight: bold;
+    text-decoration: underline; 
+  }
+
